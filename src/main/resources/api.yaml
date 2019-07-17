@@ -1,0 +1,253 @@
+# This is the DataCatalogControlPlane API spec in YAML
+# Clients and documentation will be auto-generated from this file.
+# Review the API checklist:
+# https://confluence.oci.oraclecorp.com/display/DEX/API+Consistency+Checklist
+swagger: '2.0'
+info:
+  title: Revo.lut Payments API
+  description: Basic Payments REST Spec
+  version: "v1"
+# the domain of the service
+schemes:
+  - http
+  - https
+# will be prefixed to all paths. Make sure to update the path in resource files after modifying the basePath.
+basePath: /v1
+produces:
+  - application/json
+
+
+#==========[ Parameters ]================================================================================================
+parameters:
+  AccountIdentifierPathParam:
+    name: id
+    type: string
+    in: path
+    required: true
+    description: unique Account identifier
+
+#==========[ Paths ]====================================================================================================
+paths:
+  /accounts:
+    get:
+      tags: ['Account']
+      operationId: ListAccounts
+      summary: Gets a list of all Accounts
+      description: |
+        Returns a list of Accounts.
+      responses:
+        200:
+          description: A page of Account objects.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Account'
+        429:
+          $ref: '#/responses/429'
+        500:
+          $ref: '#/responses/500'
+        default:
+          $ref: '#/responses/default'
+
+    post:
+      tags: ['Account']
+      operationId: CreateAccount
+      summary: Creates a new Account
+      description: |
+        Creates a new Account.
+      parameters:
+        - name: CreateAccountDetails
+          description: Details for the new DataCatalog.
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/CreateAccountDetails'
+      responses:
+        200:
+          description: Creates and retrieves the new account as per details
+          headers:
+            opc-work-request-id:
+              type: string
+              description: |
+                Unique Oracle-assigned identifier for the asynchronous request. You can use this to query status of the asynchronous operation.
+            opc-request-id:
+              description: |
+                Unique Oracle-assigned identifier for the request. If
+                you need to contact Oracle about a particular request,
+                please provide the request ID.
+              type: string
+        409:
+          $ref: '#/responses/409'
+        500:
+          $ref: '#/responses/500'
+        default:
+          $ref: '#/responses/default'
+
+  /transfers:
+    post:
+      tags: ['Transfer']
+      operationId: TransferMoney
+      summary: Transfer money
+      description: Transfer money between accounts
+      parameters:
+        - name: TransferMoneyDetails
+          description: The information to be updated.
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/TransferMoneyDetails'
+      responses:
+        200:
+          description: Money transfer complete
+          schema:
+            $ref: '#/definitions/TransferCompletionDetails'
+        404:
+          $ref: '#/responses/404'
+        500:
+          $ref: '#/responses/500'
+        default:
+          $ref: '#/responses/default'
+
+
+  /Accounts/{id}:
+    get:
+      tags: ['Account']
+      operationId: GetAccount
+      summary: Get Account
+      description: Gets an Account by identifier
+      parameters:
+        - $ref: "#/parameters/AccountIdentifierPathParam"
+
+      responses:
+        200:
+          description: Retrieves the Account with the given id
+          schema:
+            $ref: '#/definitions/Account'
+        404:
+          $ref: '#/responses/404'
+        500:
+          $ref: '#/responses/500'
+        default:
+          $ref: '#/responses/default'
+
+
+definitions:
+  Account:
+    description: Description of Account.
+    type: object
+    required:
+      - id
+      - balance
+    properties:
+      id:
+        description: Unique identifier
+        type: string
+      balance:
+        description: DataCatalog Identifier, can be renamed
+        type: number
+  CreateAccountDetails:
+    description: The information about new DataCatalog.
+    type: object
+    required:
+      - id
+      - balance
+    properties:
+      id:
+        description: Account Identifier
+        type: string
+      balance:
+        description: Account balance
+        type: number
+
+
+  TransferMoneyDetails:
+    description: The information from money transfer
+    type: object
+    required:
+      - from
+      - to
+      - amount
+    properties:
+      from:
+        description: Account id from which money will be transferred
+        type: string
+      to:
+        description: Account id to which money will be transferred
+        type: string
+      amount:
+        description: Amount of money to be transferred
+        type: number
+
+  TransferCompletionDetails:
+    description: State of accounts after money transfer completion
+    type: object
+    #todo: replace 4 properties with 2 tuples
+    required:
+      - from
+      - fromBalance
+      - to
+      - toBalance
+    properties:
+      from:
+        description: Account id from which Transfer was initiated
+        type: string
+      fromBalance:
+        description: Balance of the account from which Transfer was initiated after the transfer got completed
+        type: number
+      to:
+        description: Account id to which Transfer was initiated
+        type: string
+      toBalance:
+        description: Balance of the account to which Transfer was initiated after the transfer got completed
+        type: number
+
+  Error:
+    description: Error Information.
+    required:
+      - code
+      - message
+    properties:
+      code:
+        description: A short error code that defines the error, meant for programmatic parsing.
+        type: string
+      message:
+        description: A human-readable error string.
+        type: string
+
+
+
+
+#==========[ Responses ]================================================================================================
+responses:
+  400:
+    description: Bad Request
+    schema:
+      $ref: '#/definitions/Error'
+  401:
+    description: Unauthorized
+    schema:
+      $ref: '#/definitions/Error'
+  404:
+    description: Not Found
+    schema:
+      $ref: '#/definitions/Error'
+  409:
+    description: Conflict
+    schema:
+      $ref: '#/definitions/Error'
+  412:
+    description: Precondition failed
+    schema:
+      $ref: '#/definitions/Error'
+  429:
+    description: Too Many Requests
+    schema:
+      $ref: '#/definitions/Error'
+  500:
+    description: Internal Server Error
+    schema:
+      $ref: '#/definitions/Error'
+  default:
+    description: Unknown Error
+    schema:
+      $ref: '#/definitions/Error'
