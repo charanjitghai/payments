@@ -1,7 +1,3 @@
-# This is the DataCatalogControlPlane API spec in YAML
-# Clients and documentation will be auto-generated from this file.
-# Review the API checklist:
-# https://confluence.oci.oraclecorp.com/display/DEX/API+Consistency+Checklist
 swagger: '2.0'
 info:
   title: Revo.lut Payments API
