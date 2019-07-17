@@ -74,7 +74,7 @@ public class AppTest
         String id = UUID.randomUUID().toString();
         accountDataStore.addAcount(new AccountEntity(id, new BigDecimal(100)));
         accountResourceDataProvider.debit(id, new BigDecimal(100));
-        Assert.assertEquals(accountDataStore.getAccount(id).getBalance(), BigDecimal.ZERO);
+        Assert.assertEquals(BigDecimal.ZERO, accountDataStore.getAccount(id).getBalance());
     }
 
     @org.junit.jupiter.api.Test

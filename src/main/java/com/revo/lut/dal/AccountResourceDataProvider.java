@@ -34,7 +34,7 @@ public class AccountResourceDataProvider {
                     )
             );
         }
-        account.getBalance().subtract(amount);
+        account.setBalance(account.getBalance().subtract(amount));
     }
 
     private void validateAmount(BigDecimal amount) {
