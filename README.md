@@ -11,6 +11,7 @@
 	- Illegal transfer amount (< 0)
 - Libraries
 	- Jetty server
+	- Jersey
 	- swagger code-gen
 	- Jackson
 	- Guice
