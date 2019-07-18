@@ -1,6 +1,5 @@
 package com.revo.lut.dal;
 
-import com.google.inject.Inject;
 import com.revo.lut.ds.AccountDataStore;
 import com.revo.lut.error.IllegalAmountException;
 import com.revo.lut.error.InsufficientFundsException;
@@ -10,10 +9,15 @@ import java.math.BigDecimal;
 
 public class AccountResourceDataProvider {
 
+    private static final AccountResourceDataProvider INSTANCE = new AccountResourceDataProvider(AccountDataStore.getInstance());
+
+    public static AccountResourceDataProvider getInstance() {
+        return INSTANCE;
+    }
+
     private AccountDataStore accountDataStore;
 
-    @Inject
-    public AccountResourceDataProvider(AccountDataStore accountDataStore) {
+    private AccountResourceDataProvider(AccountDataStore accountDataStore) {
         this.accountDataStore = accountDataStore;
     }
 

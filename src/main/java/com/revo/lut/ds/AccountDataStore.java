@@ -1,6 +1,5 @@
 package com.revo.lut.ds;
 
-import com.google.inject.Inject;
 import com.revo.lut.error.AccountAlreadyExistsException;
 import com.revo.lut.error.AccountDoesNotExistException;
 import com.revo.lut.model.AccountEntity;
@@ -11,10 +10,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AccountDataStore {
 
+    private static final AccountDataStore INSTANCE = new AccountDataStore();
+
+    public static AccountDataStore getInstance() {
+        return INSTANCE;
+    }
+
     Map<String, AccountEntity> accounts;
 
-    @Inject
-    AccountDataStore() {
+    private AccountDataStore() {
         this.accounts = new ConcurrentHashMap<String, AccountEntity>();
     }
 
