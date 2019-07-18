@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.jersey.jackson.JacksonFeature;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -37,7 +38,8 @@ public class App
                 "jersey.config.server.provider.classnames",
                 TransferResource.class.getCanonicalName() + ";"
                     +  AccountResource.class.getCanonicalName() + ";"
-                    + GenericExceptionMapper.class.getCanonicalName());
+                    + GenericExceptionMapper.class.getCanonicalName() + ";"
+                    + JacksonFeature.class.getCanonicalName());
 
 
         try {
