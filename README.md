@@ -21,7 +21,10 @@
 2) ./run.sh
 
 ## TEST
-createAccount accountId1 accountBalance1
-createAccount accountId2 accountBalance2
-transfer accountId1 accountId2 amount
-getAllAccounts
+1) createAccount accountId1 accountBalance1
+2) createAccount accountId2 accountBalance2
+3) transfer accountId1 accountId2 amount
+4) getAccount accountId1
+5) getAccount accountId2
+6) getAllAccounts
+
