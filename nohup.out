@@ -1,0 +1,26 @@
+[main] INFO org.eclipse.jetty.util.log - Logging initialized @125ms to org.eclipse.jetty.util.log.Slf4jLog
+[main] INFO org.eclipse.jetty.server.Server - jetty-9.4.z-SNAPSHOT; built: 2019-06-10T16:30:51.723Z; git: afcf563148970e98786327af5e07c261fda175d3; jvm 1.8.0_131-b11
+[main] INFO org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+[main] INFO org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+[main] INFO org.eclipse.jetty.server.session - node0 Scavenging every 600000ms
+Jul 17, 2019 11:33:47 PM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: The (sub)resource method createAccount in com.revo.lut.resources.AccountResource contains empty path annotation.
+WARNING: The (sub)resource method getAllAccounts in com.revo.lut.resources.AccountResource contains empty path annotation.
+
+[main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@446a1e84{/,null,AVAILABLE}
+[main] INFO org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@6d86b085{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+[main] INFO org.eclipse.jetty.server.Server - Started @955ms
+[main] INFO org.eclipse.jetty.util.log - Logging initialized @173ms to org.eclipse.jetty.util.log.Slf4jLog
+[main] INFO org.eclipse.jetty.server.Server - jetty-9.4.z-SNAPSHOT; built: 2019-06-10T16:30:51.723Z; git: afcf563148970e98786327af5e07c261fda175d3; jvm 1.8.0_131-b11
+[main] INFO org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+[main] INFO org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+[main] INFO org.eclipse.jetty.server.session - node0 Scavenging every 600000ms
+Jul 17, 2019 11:34:01 PM org.glassfish.jersey.internal.Errors logErrors
+WARNING: The following warnings have been detected: WARNING: The (sub)resource method createAccount in com.revo.lut.resources.AccountResource contains empty path annotation.
+WARNING: The (sub)resource method getAllAccounts in com.revo.lut.resources.AccountResource contains empty path annotation.
+
+[main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@446a1e84{/,null,AVAILABLE}
+[main] INFO org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@6d86b085{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+[main] INFO org.eclipse.jetty.server.Server - Started @963ms
+[qtp204349222-9] INFO com.revo.lut.resources.AccountResource - accountId 1 100
+[qtp204349222-10] INFO com.revo.lut.resources.AccountResource - accountId 2 1000

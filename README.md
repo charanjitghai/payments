@@ -14,5 +14,11 @@
 	- Jersey
 	- swagger code-gen
 	- Jackson
-	- Guice
 	- Junit5
+
+## RUN
+mvn clean install
+./run.sh
+createAccount <accountId1> <accountBalance>
+createAccount <accountId2> <accountBalance2>
+transfer <accountId1> <accountId2> <amount>
