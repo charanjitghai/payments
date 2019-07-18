@@ -38,8 +38,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Account'
-        429:
-          $ref: '#/responses/429'
         500:
           $ref: '#/responses/500'
         default:
@@ -88,8 +86,12 @@ paths:
           description: Money transfer complete
           schema:
             $ref: '#/definitions/TransferCompletionDetails'
+        400:
+          $ref: '#/responses/422'
         404:
           $ref: '#/responses/404'
+        412:
+          $ref: '#/responses/412'
         500:
           $ref: '#/responses/500'
         default:
@@ -210,10 +212,6 @@ responses:
     description: Bad Request
     schema:
       $ref: '#/definitions/Error'
-  401:
-    description: Unauthorized
-    schema:
-      $ref: '#/definitions/Error'
   404:
     description: Not Found
     schema:
@@ -224,10 +222,6 @@ responses:
       $ref: '#/definitions/Error'
   412:
     description: Precondition failed
-    schema:
-      $ref: '#/definitions/Error'
-  429:
-    description: Too Many Requests
     schema:
       $ref: '#/definitions/Error'
   500:
