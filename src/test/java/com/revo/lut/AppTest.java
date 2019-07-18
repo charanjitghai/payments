@@ -1,7 +1,5 @@
 package com.revo.lut;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import com.revo.lut.dal.AccountResourceDataProvider;
 import com.revo.lut.ds.AccountDataStore;
 import com.revo.lut.error.AccountAlreadyExistsException;
@@ -26,15 +24,12 @@ public class AppTest
     static AccountResourceDataProvider accountResourceDataProvider;
     @BeforeAll
     public static void setup() {
-        Injector injector = Guice.createInjector(new PaymentsModule());
-        accountDataStore = injector.getInstance(AccountDataStore.class);
-        accountResourceDataProvider = injector.getInstance(AccountResourceDataProvider.class);
+        accountDataStore = AccountDataStore.getInstance();
+        accountResourceDataProvider = AccountResourceDataProvider.getInstance();
     }
 
     @org.junit.jupiter.api.Test
     public void testAccountCreation() {
-//        Injector injector = Guice.createInjector(new PaymentsModule());
-//        accountDataStore = injector.getInstance(AccountDataStore.class);
         String id = UUID.randomUUID().toString();
         accountDataStore.addAcount(new AccountEntity(id, new BigDecimal(100)));
         Assert.assertEquals(accountDataStore.getAccount(id).getBalance(), new BigDecimal(100));
