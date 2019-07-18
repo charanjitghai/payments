@@ -15,6 +15,7 @@
 	- swagger code-gen
 	- Jackson
 	- Junit5
+	- lombok
 
 ## RUN
 1) mvn clean install
