@@ -17,8 +17,10 @@
 	- Junit5
 
 ## RUN
-mvn clean install
-./run.sh
+1) mvn clean install
+2) ./run.sh
+
+## TEST
 createAccount <accountId1> <accountBalance>
 createAccount <accountId2> <accountBalance2>
 transfer <accountId1> <accountId2> <amount>
