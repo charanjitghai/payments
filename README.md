@@ -18,8 +18,7 @@
 	- lombok
 
 ## RUN
-1) mvn clean install
-2) ./run.sh
+1) source start.sh
 
 ## TEST
 1) createAccount accountId1 accountBalance1
