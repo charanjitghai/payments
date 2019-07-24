@@ -31,6 +31,7 @@
 
 ## Sample Session
 ➜  payments git:(master) source start.sh
+
 starting application
 [2] 90326
 appending output to nohup.out
