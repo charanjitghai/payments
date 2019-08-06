@@ -1,8 +1,7 @@
 package com.revo.lut.resources;
 
-import com.revo.lut.ds.AccountDataStore;
-import com.revo.lut.model.AccountEntity;
-import com.revo.lut.util.Converter;
+import com.revo.lut.service.AccountManagementService;
+import com.revo.lut.util.Validator;
 import io.swagger.client.model.CreateAccountDetails;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,43 +12,43 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-import java.util.stream.Collectors;
 
 @Path("/v1/accounts")
 @Produces({"application/json"})
 @Slf4j
 public class AccountResource {
 
-    AccountDataStore accountDataStore;
+    AccountManagementService accountManagementService;
 
     public AccountResource() {
-        this.accountDataStore = AccountDataStore.getInstance();
+        this.accountManagementService = AccountManagementService.getInstance();
     }
 
     @GET
     @Path("/{id}")
     public Response getAccount(@Nonnull @PathParam("id") String accountId) {
         log.info("accountId {}", accountId);
-        return Response.status(Response.Status.OK).entity(Converter.convertToAccount(accountDataStore.getAccount(accountId))).build();
+        Validator.validateAccountId(accountId);
+        return Response.status(Response.Status.OK).entity(accountManagementService.getAccount(accountId)).build();
     }
 
     @POST
     @Path("/")
     public Response createAccount(@Nonnull CreateAccountDetails createAccountDetails) {
-        log.info("accountId {} {}", createAccountDetails.getId(), createAccountDetails.getBalance());
-        AccountEntity account = Converter.convertToAccountEntity(createAccountDetails);
-        account = accountDataStore.addAcount(account);
-        return Response.status(Response.Status.OK).entity(Converter.convertToAccount(account)).build();
+        log.info("accountId {} accountBalance {}", createAccountDetails.getId(), createAccountDetails.getBalance());
+        Validator.validateAccountId(createAccountDetails.getId());
+        Validator.validateAmount(createAccountDetails.getBalance());
+        return Response.status(Response.Status.OK).entity(accountManagementService.createAccount(createAccountDetails)).build();
     }
 
     @GET
     @Path("/")
     public Response getAllAccounts() {
+        log.info("getting all accounts");
         return Response.status(Response.Status.OK)
                 .entity(
-                        accountDataStore.getAllAccounts()
-                                .stream().map(Converter :: convertToAccount)
-                                .collect(Collectors.toList())
+                        accountManagementService.getAllAccounts()
                 ).build();
     }
+
 }
