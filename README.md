@@ -21,9 +21,10 @@
 
 ## RUN
 1) Easy Start
-	source start.sh (sets up shell with easy access commands like createAccount, getAccount, transfer etc.)
+	- source start.sh 
+	- sets up shell with easy access commands like createAccount, getAccount, transfer etc.
 2) Using Java:
-	java -jar target/payments-1.0-SNAPSHOT-jar-with-dependencies.jar
+	- java -jar target/payments-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 ## TEST
 1) createAccount accountId1 accountBalance1
