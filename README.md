@@ -1,8 +1,9 @@
 # payments
 
 ## Overview
-- Simple REST api application to support money transfer requests
-- Uses In-memmory datastore
+- Simple REST api application to support concurrent money transfer requests
+- Application server listens on localhost:8080
+- Uses In-memmory synchronized datastore with minimalistic locking
 - Ability to Create, get, list accounts and transfer money between accounts
 - Validations
 	- Duplicate Acount
@@ -16,9 +17,13 @@
 	- Jackson
 	- Junit5
 	- lombok
+	- Jersey Test Framework
 
 ## RUN
-1) source start.sh
+1) Easy Start
+	source start.sh (sets up shell with easy access commands like createAccount, getAccount, transfer etc.)
+2) Using Java:
+	java -jar target/payments-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 ## TEST
 1) createAccount accountId1 accountBalance1
