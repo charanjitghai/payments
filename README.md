@@ -23,8 +23,14 @@
 1) Easy Start
 	- source start.sh 
 	- sets up shell with easy access commands like createAccount, getAccount, transfer etc.
+	- Logs available in nohup.out
 2) Using Java:
 	- java -jar target/payments-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+## STOP
+1) ./stop.sh
+    - Uses lsof to find the process running on port 8080 and kills it
+2) kill -9 'process_id_of_process_running_on_port_8080_here'
 
 ## TEST
 1) createAccount accountId1 accountBalance1
