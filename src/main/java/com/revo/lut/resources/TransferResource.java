@@ -6,13 +6,14 @@ import com.revo.lut.service.TransferManagementService;
 import io.swagger.client.model.TransferMoneyDetails;
 
 import javax.annotation.Nonnull;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/v1")
-@Produces({"application/json"})
+@Path("/v1/")
 public class TransferResource {
 
     private TransferManagementService transferManagementService;
@@ -23,6 +24,8 @@ public class TransferResource {
 
     @POST
     @Path("transfers")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response transfer(@Nonnull TransferMoneyDetails transferMoneyDetails) {
         validate(transferMoneyDetails);
         return Response.status(Response.Status.OK).entity(transferManagementService.transfer(transferMoneyDetails)).build();
