@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/v1/")
+@Path("/v1/transfers")
 public class TransferResource {
 
     private TransferManagementService transferManagementService;
@@ -23,7 +23,6 @@ public class TransferResource {
     }
 
     @POST
-    @Path("transfers")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response transfer(@Nonnull TransferMoneyDetails transferMoneyDetails) {

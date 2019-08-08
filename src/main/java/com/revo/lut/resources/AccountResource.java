@@ -36,7 +36,6 @@ public class AccountResource {
     }
 
     @POST
-    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createAccount(@Nonnull CreateAccountDetails createAccountDetails) {
@@ -47,7 +46,6 @@ public class AccountResource {
     }
 
     @GET
-    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAccounts() {
         log.info("getting all accounts");
