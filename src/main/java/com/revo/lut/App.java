@@ -1,11 +1,5 @@
 package com.revo.lut;
 
-import com.revo.lut.error.AccountAlreadyExistsException;
-import com.revo.lut.error.AccountDoesNotExistException;
-import com.revo.lut.error.IllegalAmountException;
-import com.revo.lut.error.IncompleteTransferDetailsException;
-import com.revo.lut.error.InsufficientFundsException;
-import com.revo.lut.error.SelfTransferException;
 import com.revo.lut.resources.AccountResource;
 import com.revo.lut.resources.TransferResource;
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +7,6 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.jackson.JacksonFeature;
-
-import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
 
 
 @Slf4j
