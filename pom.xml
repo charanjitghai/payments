@@ -218,7 +218,7 @@
       <version>1.18.8</version>
       <scope>provided</scope>
     </dependency>
-
+    
     <dependency>
       <groupId>org.glassfish.jersey.test-framework.providers</groupId>
       <artifactId>jersey-test-framework-provider-jetty</artifactId>
@@ -231,7 +231,6 @@
       <version>${junit-version}</version>
       <scope>test</scope>
     </dependency>
-    
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
